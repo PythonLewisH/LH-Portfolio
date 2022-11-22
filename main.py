@@ -4,9 +4,10 @@ from forms import ContactForm
 import smtplib
 
 
+
 # Run Flask App
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY", "MySecretKey")
 
 
 @app.route('/', methods=["GET", "POST"])
@@ -37,6 +38,10 @@ def home():
             flash("Something went wrong and we could not deliver your message, try sending an email instead.")
             print(contact_form.errors)
             return render_template("index.html", contact_form=contact_form)
+
+
+
+
 
 
 if __name__ == "__main__":
