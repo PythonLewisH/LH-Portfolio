@@ -6,7 +6,7 @@ import smtplib
 
 # Run Flask App
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY", "MySecretKey")
+app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 
 
 @app.route('/', methods=["GET", "POST"])
